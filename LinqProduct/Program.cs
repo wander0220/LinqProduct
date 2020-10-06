@@ -20,7 +20,7 @@ namespace LinqProduct
     {
         static void Main(string[] args)
         {
-            List<Product> input = new List<Product>()
+            List<Product> products = new List<Product>()
             {
                 new Product(){Name="고구마",Price=1500}
                 ,new Product(){Name="사과",Price=2400}
@@ -31,6 +31,17 @@ namespace LinqProduct
                 ,new Product(){Name="옥수수",Price=1500}
                 ,new Product(){Name="자두",Price=500}
             };
+
+            var output = from item in products
+                         where item.Price > 1500
+                         orderby item.Name ascending
+                         select item;
+
+            foreach ( var i in output)
+            {
+                Console.WriteLine(i);
+            }
+
         }
     }
 }
